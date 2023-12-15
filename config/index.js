@@ -1,3 +1,4 @@
+import {UnifiedWebpackPluginV5} from "weapp-tailwindcss";
 const config = {
   projectName: 'taro',
   date: '2023-12-15',
@@ -26,6 +27,15 @@ const config = {
   mini: {
     webpackChain (chain) {
       chain.merge({
+        plugin: {
+          install: {
+            plugin: UnifiedWebpackPluginV5,
+            args: [{
+              appType: 'taro',
+              rem2rpx: true
+            }]
+          }
+        },
         module: {
           rule: {
             mjsScript: {
